@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>D3 workspace</title>
+  <script src="https://d3js.org/d3.v5.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    #playground-container {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .sample-container {
+      width: 33%;
+      padding: 15px;
+    }
+    .sample-container h3 {
+      margin-top: 0;
+    }
+  </style>
+</head>
+<body>
+  <i>Use Node JS version >= v12.18.0</i>
+  <div id="playground-container">
+    <div class="sample-container">
+      <h3>1. Nested selector</h3>
+      <table>
+        <thead>
+          <tr><td>  A</td><td>  B</td><td>  C</td><td>  D</td></tr>
+        </thead>
+        <tbody>
+          <tr><td>  0</td><td>  1</td><td>  2</td><td>  3</td></tr>
+          <tr><td>  4</td><td>  5</td><td>  6</td><td>  7</td></tr>
+          <tr><td>  8</td><td>  9</td><td> 10</td><td> 11</td></tr>
+          <tr><td> 12</td><td> 13</td><td> 14</td><td> 15</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <script>
+    window.counter = 1;
+    function appendToView(node, name) {
+      window.counter++;
+      window.playgroundContainerId = 'playground-container';
+      let nodeContainer = document.createElement('div');
+      nodeContainer.setAttribute('class', 'sample-container');
+      let titleNode = document.createElement('h3');
+      titleNode.innerText = `${window.counter}. ${name}`;
+      nodeContainer.append(titleNode);
+      nodeContainer.append(node);
+      document.getElementById(window.playgroundContainerId).appendChild(nodeContainer);
+    }
+  </script>
+  <script src="./scripts/basics/selectors.js"></script>
+  <script src="./scripts/basics/shapes.js"></script>
+  <script src="./scripts/transitions/animation.js"></script>
+</body>
+</html>
